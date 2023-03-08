@@ -3,10 +3,6 @@ import { Tabs } from "antd";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import "./index.scss";
-import { useLocation } from "react-router";
-import { decode } from "../../../utils/string";
-
-const { TabPane } = Tabs;
 
 const SampleData = {
 	day: {

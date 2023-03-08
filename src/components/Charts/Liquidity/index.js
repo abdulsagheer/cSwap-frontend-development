@@ -119,7 +119,7 @@ const Liquidity = () => {
 	return (
 		<div className="liquidity">
 			<div className="graph-tabs">
-				<div>
+				<div className="graph-info">
 					<div className="graph-title">Liquidity</div>
 					<div className="graph-price">$7,226,718</div>
 				</div>

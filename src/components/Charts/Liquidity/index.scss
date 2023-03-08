@@ -6,10 +6,23 @@
 	padding: 40px 20px;
 	min-width: 40%;
 
+	.highcharts-background {
+		fill: #030b1e !important;
+		--darkreader-inline-fill: #030b1e !important;
+	}
+
+	.highcharts-title {
+		display: none;
+	}
+
 	.graph-tabs {
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
+
+		.graph-info {
+			padding: 0 0 20px 30px;
+		}
 
 		.graph-title {
 			font-weight: 400;
@@ -24,6 +37,11 @@
 
 		.filter {
 			display: inline;
+
+			.ant-tabs-tab-active {
+				background: #052e64 !important;
+				border-color: #052e64 !important;
+			}
 		}
 	}
 }
