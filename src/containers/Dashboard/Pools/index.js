@@ -207,7 +207,9 @@ const Pools = () => {
 			dataIndex: "pool",
 			key: "pool",
 			render: (text, record) => (
-				<div onClick={() => navigate(`/pools/${record?.key}`)}>
+				<div
+					onClick={() => navigate(`/pools/${record?.key}`)}
+					style={{ cursor: "pointer" }}>
 					<>
 						<img src={Cmdx} alt={"pool"} width="50" />
 					</>

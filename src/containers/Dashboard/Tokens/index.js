@@ -280,7 +280,9 @@ const Tokens = () => {
 			dataIndex: "token",
 			key: "token",
 			render: (text, record) => (
-				<div onClick={() => navigate(`/tokens/${record?.key}`)}>
+				<div
+					onClick={() => navigate(`/tokens/${record?.key}`)}
+					style={{ cursor: "pointer" }}>
 					<img
 						src={images[text]}
 						alt="coin"

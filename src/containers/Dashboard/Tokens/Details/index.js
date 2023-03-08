@@ -2,7 +2,7 @@ import React from "react";
 import "./index.scss";
 import Upwards from "../../../../assets/images/upwards.svg";
 import cmdx from "../../../../assets/images/tokens/cmdx.svg";
-import { Table, Input } from "antd";
+import { Table } from "antd";
 import Cmdx from "../../../../assets/images/cmdx.png";
 import { Col, Row } from "../../../../components/common";
 import Liquidity from "../../../../components/Charts/Liquidity";
@@ -207,7 +207,8 @@ const columns = [
 		dataIndex: "pool",
 		key: "pool",
 		render: (text, record) => (
-			<div>
+			<div
+				style={{ cursor: "pointer" }}>
 				<img src={Cmdx} alt={"pool"} width="50" />
 				<span>{text}</span>
 			</div>
