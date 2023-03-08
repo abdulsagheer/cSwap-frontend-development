@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import "./index.scss";
+import Upwards from "../../../../assets/images/upwards.svg";
+import cmdx from "../../../../assets/images/tokens/cmdx.svg";
 import { Table, Input } from "antd";
-import Cmdx from "../../../assets/images/cmdx.png";
-import Upwards from "../../../assets/images/upwards.svg";
-import { Col, Row, SvgIcon } from "../../../components/common";
-import { useNavigate } from "react-router";
+import Cmdx from "../../../../assets/images/cmdx.png";
+import { Col, Row } from "../../../../components/common";
+import Liquidity from "../../../../components/Charts/Liquidity";
+import Volume from "../../../../components/Charts/Volume";
 
 const data = [
 	{
@@ -199,63 +201,102 @@ const data = [
 	},
 ];
 
-const Pools = () => {
-	const navigate = useNavigate();
-	const columns = [
-		{
-			title: "Pool",
-			dataIndex: "pool",
-			key: "pool",
-			render: (text, record) => (
-				<div onClick={() => navigate(`/pools/${record?.key}`)}>
-					<>
-						<img src={Cmdx} alt={"pool"} width="50" />
-					</>
-					<span>{text}</span>
-				</div>
-			),
-		},
-		{
-			title: "Liquidity",
-			dataIndex: "liquidity",
-		},
-		{
-			title: "Volume",
-			dataIndex: "volume",
-		},
-		{
-			title: "Volume Change",
-			dataIndex: "volumeChange",
-		},
-		{
-			title: "Liquidity Change",
-			dataIndex: "liquidityChange",
-		},
-		{
-			title: "Fees",
-			dataIndex: "fees",
-		},
-	];
+const columns = [
+	{
+		title: "Pool",
+		dataIndex: "pool",
+		key: "pool",
+		render: (text, record) => (
+			<div>
+				<img src={Cmdx} alt={"pool"} width="50" />
+				<span>{text}</span>
+			</div>
+		),
+	},
+	{
+		title: "Liquidity",
+		dataIndex: "liquidity",
+	},
+	{
+		title: "Volume",
+		dataIndex: "volume",
+	},
+	{
+		title: "Volume Change",
+		dataIndex: "volumeChange",
+	},
+	{
+		title: "Liquidity Change",
+		dataIndex: "liquidityChange",
+	},
+	{
+		title: "Fees",
+		dataIndex: "fees",
+	},
+];
 
-	const [searchKey, setSearchKey] = useState();
-
-	const onSearchChange = (searchKey) => {
-		setSearchKey(searchKey.trim().toLowerCase());
-	};
-
+const TokenDetails = () => {
 	return (
-		<section className="pools-section">
-			<h1 className="header">All Pools</h1>
-			<Row>
-				<Col className="assets-search-section">
-					<Input
-						placeholder="Search Pools.."
-						onChange={(event) => onSearchChange(event.target.value)}
-						suffix={<SvgIcon name="search" viewbox="0 0 18 18" />}
-					/>
+		<section>
+			<h1 className="header">Pool Overview</h1>
+			<div className="token-values">
+				<div>
+					<img src={cmdx} alt={"token"} width="50" />
+					<span className="token-header">CMDX</span>
+				</div>
+				<div className="statistics">
+					<div className="token-value">
+						<div className="token-header">Price</div>
+						<div className="price">$0.0955</div>
+					</div>
+					<div className="token-value">
+						<div className="token-header">Price(24h)</div>
+						<div className="price">
+							<span className="percentage">
+								<img src={Upwards} alt="upwards" width={20} height={30} />
+								5.02%
+							</span>
+						</div>
+					</div>
+					<div className="token-value">
+						<div className="token-header">Volume(24h)</div>
+						<div className="price">$20,571.23</div>
+					</div>
+					<div className="token-value">
+						<div className="token-header">Volume(24h) change</div>
+						<div className="price">
+							<span className="percentage">
+								<img src={Upwards} alt="upwards" width={20} height={30} />
+								5.02%
+							</span>
+						</div>
+					</div>
+					<div className="token-value">
+						<div className="token-header">Liquidity</div>
+						<div className="price">$75.81M</div>
+					</div>
+				</div>
+			</div>
+			<div className="header">CMDX - Volume & Liquidity</div>
+			<Row className="graphs">
+				<Col>
+					<Liquidity />
+				</Col>
+				<Col>
+					<Volume />
 				</Col>
 			</Row>
-			<div className="custom-table  pools-table">
+			<div
+				style={{
+					fontWeight: "600",
+					fontSize: "32px",
+					lineHeight: "42px",
+					color: "#FFFFFF",
+					margin: "20px 0",
+				}}>
+				Pools
+			</div>
+			<div className="custom-table token-table">
 				<Table
 					dataSource={data}
 					columns={columns}
@@ -272,4 +313,4 @@ const Pools = () => {
 	);
 };
 
-export default Pools;
+export default TokenDetails;

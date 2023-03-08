@@ -9,6 +9,8 @@ import Dashboard from "./containers/Dashboard";
 import Overview from "./containers/Dashboard/Overview";
 import Pools from "./containers/Dashboard/Pools";
 import Tokens from "./containers/Dashboard/Tokens";
+import PoolDetails from "./containers/Dashboard/Pools/Details";
+import TokenDetails from "./containers/Dashboard/Tokens/Details";
 
 const routes = [
 	{
@@ -60,10 +62,26 @@ const routes = [
 		),
 	},
 	{
+		path: "/pools/:id",
+		element: (
+			<Dashboard>
+				<PoolDetails />
+			</Dashboard>
+		),
+	},
+	{
 		path: "/tokens",
 		element: (
 			<Dashboard>
 				<Tokens />
+			</Dashboard>
+		),
+	},
+	{
+		path: "/tokens/:id",
+		element: (
+			<Dashboard>
+				<TokenDetails />
 			</Dashboard>
 		),
 	},

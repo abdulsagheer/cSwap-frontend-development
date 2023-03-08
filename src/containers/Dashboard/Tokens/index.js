@@ -10,6 +10,7 @@ import juno from "../../../assets/images/tokens/juno.svg";
 import osmo from "../../../assets/images/tokens/osmo.svg";
 import Upwards from "../../../assets/images/upwards.svg";
 import { Col, Row, SvgIcon } from "../../../components/common";
+import { useNavigate } from "react-router";
 
 const data = [
 	{
@@ -271,46 +272,46 @@ const images = {
 	OSMO: osmo,
 };
 
-const columns = [
-	{
-		title: "Token",
-		dataIndex: "token",
-		key: "token",
-		render: (text, record) => (
-			<div>
-				<img
-					src={images[text]}
-					alt="coin"
-					width="50"
-					style={{ margin: "0 10px" }}
-				/>
-				<span>{text}</span>
-			</div>
-		),
-	},
-	{
-		title: "Price",
-		dataIndex: "price",
-	},
-	{
-		title: "Price(24h)",
-		dataIndex: "price24",
-	},
-	{
-		title: "Volume(24h)",
-		dataIndex: "volume24",
-	},
-	{
-		title: "Volume(24)change",
-		dataIndex: "volume24change",
-	},
-	{
-		title: "Liquidity",
-		dataIndex: "liquidity",
-	},
-];
-
 const Tokens = () => {
+	const navigate = useNavigate();
+	const columns = [
+		{
+			title: "Token",
+			dataIndex: "token",
+			key: "token",
+			render: (text, record) => (
+				<div onClick={() => navigate(`/tokens/${record?.key}`)}>
+					<img
+						src={images[text]}
+						alt="coin"
+						width="50"
+						style={{ margin: "0 10px" }}
+					/>
+					<span>{text}</span>
+				</div>
+			),
+		},
+		{
+			title: "Price",
+			dataIndex: "price",
+		},
+		{
+			title: "Price(24h)",
+			dataIndex: "price24",
+		},
+		{
+			title: "Volume(24h)",
+			dataIndex: "volume24",
+		},
+		{
+			title: "Volume(24)change",
+			dataIndex: "volume24change",
+		},
+		{
+			title: "Liquidity",
+			dataIndex: "liquidity",
+		},
+	];
 	const [searchKey, setSearchKey] = useState();
 
 	const onSearchChange = (searchKey) => {

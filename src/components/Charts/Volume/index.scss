@@ -1,0 +1,12 @@
+.volume {
+	background: #030b1e;
+	border: 1px solid rgba(42, 71, 113, 0.5);
+	box-shadow: inset 7px 7px 16px 1px #262b38;
+	border-radius: 20px;
+	padding: 40px 20px;
+	min-width: 40%;
+
+	.comdex-tabs {
+		align-items: end;
+	}
+}

@@ -2,6 +2,9 @@ import React from "react";
 import "./index.scss";
 import Swap from "../../../assets/images/cSwap-light-logo.svg";
 import Upwards from "../../../assets/images/upwards.svg";
+import { Col, Row } from "../../../components/common";
+import Volume from "../../../components/Charts/Volume";
+import Liquidity from "../../../components/Charts/Liquidity";
 
 const Overview = () => {
 	return (
@@ -46,6 +49,15 @@ const Overview = () => {
 					</div>
 				</div>
 			</div>
+			<div className="header">CMDX - Volume & Liquidity</div>
+			<Row className="graphs">
+				<Col>
+					<Liquidity />
+				</Col>
+				<Col>
+					<Volume />
+				</Col>
+			</Row>
 		</section>
 	);
 };
